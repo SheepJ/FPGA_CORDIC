@@ -1,0 +1,50 @@
+
+State Machine - |CORDIC_top|KeyFilter:u_KeyFilter2|curr_st
+Name curr_st.FILTER2 curr_st.DOWN curr_st.FILTER1 curr_st.IDLE 
+curr_st.IDLE 0 0 0 0 
+curr_st.FILTER1 0 0 1 1 
+curr_st.DOWN 0 1 0 1 
+curr_st.FILTER2 1 0 0 1 
+
+State Machine - |CORDIC_top|KeyFilter:u_KeyFilter1|curr_st
+Name curr_st.FILTER2 curr_st.DOWN curr_st.FILTER1 curr_st.IDLE 
+curr_st.IDLE 0 0 0 0 
+curr_st.FILTER1 0 0 1 1 
+curr_st.DOWN 0 1 0 1 
+curr_st.FILTER2 1 0 0 1 
+
+State Machine - |CORDIC_top|Output_block:u_Output_block|state
+Name state.00 state.10 state.01 
+state.00 0 0 0 
+state.01 1 0 1 
+state.10 1 1 0 
+
+State Machine - |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|state
+Name state.110 state.101 state.100 state.011 state.010 state.001 state.000 
+state.000 0 0 0 0 0 0 0 
+state.001 0 0 0 0 0 1 1 
+state.010 0 0 0 0 1 0 1 
+state.011 0 0 0 1 0 0 1 
+state.100 0 0 1 0 0 0 1 
+state.101 0 1 0 0 0 0 1 
+state.110 1 0 0 0 0 0 1 
+
+State Machine - |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|state
+Name state.OUTPUT state.PRE2 state.PRE1 state.SWAP state.PROCESSING state.FIRST_IN state.WAIT 
+state.WAIT 0 0 0 0 0 0 0 
+state.FIRST_IN 0 0 0 0 0 1 1 
+state.PROCESSING 0 0 0 0 1 0 1 
+state.SWAP 0 0 0 1 0 0 1 
+state.PRE1 0 0 1 0 0 0 1 
+state.PRE2 0 1 0 0 0 0 1 
+state.OUTPUT 1 0 0 0 0 0 1 
+
+State Machine - |CORDIC_top|Arith_block:u_Arith_block|state
+Name state.OUTPUT state.PRE2 state.PRE1 state.SWAP state.PROCESSING state.FIRST_IN state.WAIT 
+state.WAIT 0 0 0 0 0 0 0 
+state.FIRST_IN 0 0 0 0 0 1 1 
+state.PROCESSING 0 0 0 0 1 0 1 
+state.SWAP 0 0 0 1 0 0 1 
+state.PRE1 0 0 1 0 0 0 1 
+state.PRE2 0 1 0 0 0 0 1 
+state.OUTPUT 1 0 0 0 0 0 1 

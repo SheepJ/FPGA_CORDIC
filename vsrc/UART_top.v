@@ -1,0 +1,43 @@
+`timescale 1ns / 1ps
+//
+// Company: 
+// Engineer: 
+// 
+// Create Date: 2022/04/28 09:19:27
+// Design Name: 
+// Module Name: uart_tx
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//
+ 
+module UART_top (
+input clk						,
+input rst_n						,
+input tx_start					,
+input [47:0]uart_data_in	,
+output uart_tx		    		,
+output trans_done	
+);
+
+
+//一次发送6个字节的uart
+uart_6byte_tx u_uart_6byte_tx(
+	.clk				(clk),
+	.rst_n			(rst_n),
+	.trans_start	(tx_start),
+	.uart_data_in	(uart_data_in),
+	.uart_tx		   (uart_tx),
+	.trans_done		(trans_done)
+);
+
+
+endmodule 

@@ -1,0 +1,155 @@
+//*********************************************************
+//功能1：已知角度θ，求正弦Sinhθ和余弦Coshθ
+
+//思想:若向量模值为1，则其x坐标就是余弦值，y坐标就是正弦值。
+//利用这一点，从(K,0)处迭代旋转至θ处的单位矢量即可。
+//*********************************************************
+//angle改为40个42位寄存器，并且xyz用两组
+
+module Arith_block_Ext(
+input 			clk,
+input 			rst_n,//低电平有效
+input	[6:0]		theta,//theta为0到90
+input				start,//低電平有效
+
+output reg start_to_UART,	//运算完成标志，传给Output_block
+output reg signed[41:0]	Sinh,//7位整数(40-34)，34位小数(33-0),
+output reg signed[41:0]	Cosh
+
+);
+reg [41:0]angle[33:0];//atan角度
+reg [41:0]K;//因子
+
+reg [41:0] x_curr;
+reg [41:0] y_curr;
+reg [41:0] x_pre;
+reg [41:0] y_pre;
+
+
+reg [41:0] z[0:50];
+
+reg 			[3:0] state;//状态机
+reg signed [83:0] Cosh_pre ;//乘法
+reg signed [83:0] Sinh_pre ;//乘法
+
+
+wire [7:0] extended_theta;
+assign extended_theta = {1'b0, theta};// 构建41位有符号定点数
+reg [6:0]i;//循环
+
+
+
+//状态
+parameter  	WAIT			= 	3'b000, 
+				FIRST_IN		= 	3'b001, 
+				PROCESSING	= 	3'b010, 
+				SWAP			=  3'b011,
+				PRE1			= 	3'b100,
+				PRE2			=	3'b101,
+				OUTPUT		=	3'b110;
+
+
+
+initial begin
+	K=42'd20744641531				;
+	angle[0] = 42'd943700770200;		//*2^34
+	angle[1] = 42'd438795869600;    
+	angle[2] = 42'd215877450100;    
+	angle[3] = 42'd107514321100;
+	angle[4] = 42'd53704577700 ;
+	angle[5] = 42'd26845730500 ;    
+	angle[6] = 42'd13422045900 ;    
+	angle[7] = 42'd6710920500  ;    
+   angle[8] = 42'd3355447500  ;     
+   angle[9] = 42'd1677722100  ;    
+   angle[10]= 42'd838860900   ;     
+   angle[11]= 42'd419430400   ;	   
+   angle[12]= 42'd209715200   ;    
+   angle[13]= 42'd104857600  	;     
+   angle[14]= 42'd52428800    ;    
+   angle[15]= 42'd26214400    ;    
+   angle[16]= 42'd13107200   	;		
+   angle[17]= 42'd6553600  	;     
+   angle[18]= 42'd3276800     ;    
+   angle[19]= 42'd1638400     ;    
+   angle[20]= 42'd819200      ;    
+	angle[21]= 42'd409600     	;     
+	angle[22]= 42'd204800      ;    
+	angle[23]= 42'd102400     	;     
+	angle[24]= 42'd51200       ;    
+	angle[25]= 42'd25600      	;     
+	angle[26]= 42'd12800     	;	      
+	angle[27]= 42'd6400       	;	   
+	angle[28]= 42'd3200       	;     
+	angle[29]= 42'd1600        ;    
+	angle[30]= 42'd800        	;     
+	angle[31]= 42'd400        	;    
+	angle[32]= 42'd200         ;    
+	angle[33]= 42'd100         ;    
+end
+
+
+
+always@(posedge clk or negedge rst_n) begin
+	if(~rst_n) begin
+		Cosh 	<= 42'hAAAAAAAAAA;
+		Sinh 	<= 42'd0;
+		i   	<= 7'd0;
+		start_to_UART <= 1'b0;
+		state <= WAIT;
+	end
+	else begin 
+		if(state == WAIT) begin
+			start_to_UART <= 1'b0;
+			Cosh <= Cosh;
+			Sinh <= Sinh;
+			state <= (start)? FIRST_IN : WAIT;
+		end
+		else if(state == FIRST_IN) begin
+			x_pre <= 42'd17179869184;//x=1
+			y_pre <= 42'd0;
+			z[0]  <= {extended_theta, 34'd0};
+			state <= PROCESSING;
+			i		<= 7'd0;
+		end
+	
+		else if(state == PROCESSING) begin
+			if(z[i][41] == 0) begin
+				x_curr <= x_pre + (y_pre>>>(i+1));
+				y_curr <= y_pre + (x_pre>>>(i+1));
+				z[i+1] <= z[i]  - angle[i]  ;
+			end
+			else if(z[i][41] == 1) begin
+				x_curr <= x_pre -(y_pre>>>(i+1));
+				y_curr <= y_pre -(x_pre>>>(i+1));
+				z[i+1] <= z[i]  + angle[i]	 ;
+			end
+			i  <=  i+ 1'b1	;
+			state <= SWAP	;
+		end
+		else if(state == SWAP) begin
+			x_pre <= x_curr;
+			y_pre <= y_curr;
+			state <= (i==33)? PRE1 : PROCESSING;
+		end
+		
+		else if(state == PRE1) begin
+			Cosh_pre <= x_curr * K;//42*42位，84位
+			Sinh_pre <= y_curr * K;
+			state   <= PRE2;
+		end
+		else if(state == PRE2) begin
+			Cosh 	<= {1'b0, Cosh_pre[74:34]}; //84位选出41位
+			Sinh 	<= {1'b0, Sinh_pre[74:34]}; //84位选出41位
+			state <= OUTPUT;
+		end
+		else if(state == OUTPUT) begin
+			start_to_UART <= 1'b1;
+			state <= WAIT;
+		end
+	end
+end
+
+
+endmodule
+

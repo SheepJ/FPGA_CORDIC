@@ -1,0 +1,1180 @@
+Analysis & Synthesis report for CORDIC_top
+Fri Nov 24 23:45:39 2023
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |CORDIC_top|KeyFilter:u_KeyFilter2|curr_st
+ 10. State Machine - |CORDIC_top|KeyFilter:u_KeyFilter1|curr_st
+ 11. State Machine - |CORDIC_top|Output_block:u_Output_block|state
+ 12. State Machine - |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|state
+ 13. State Machine - |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|state
+ 14. State Machine - |CORDIC_top|Arith_block:u_Arith_block|state
+ 15. User-Specified and Inferred Latches
+ 16. Registers Removed During Synthesis
+ 17. Removed Registers Triggering Further Register Optimizations
+ 18. General Register Statistics
+ 19. Inverted Register Statistics
+ 20. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 21. Parameter Settings for User Entity Instance: Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block0
+ 22. Parameter Settings for User Entity Instance: Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block1
+ 23. Parameter Settings for User Entity Instance: Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block2
+ 24. Parameter Settings for User Entity Instance: Arith_block:u_Arith_block
+ 25. Parameter Settings for User Entity Instance: Arith_block_Ext:u_Arith_block_Ext
+ 26. Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Mod0
+ 27. Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Div0
+ 28. Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Mod1
+ 29. Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Div1
+ 30. Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Mod2
+ 31. Parameter Settings for Inferred Entity Instance: Arith_block:u_Arith_block|lpm_mult:Mult1
+ 32. Parameter Settings for Inferred Entity Instance: Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1
+ 33. Parameter Settings for Inferred Entity Instance: Arith_block:u_Arith_block|lpm_mult:Mult0
+ 34. Parameter Settings for Inferred Entity Instance: Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult0
+ 35. lpm_mult Parameter Settings by Entity Instance
+ 36. Port Connectivity Checks: "Output_block:u_Output_block"
+ 37. Elapsed Time Per Partition
+ 38. Analysis & Synthesis Messages
+ 39. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                          ;
++------------------------------------+--------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Nov 24 23:45:39 2023            ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version ;
+; Revision Name                      ; CORDIC_top                                       ;
+; Top-level Entity Name              ; CORDIC_top                                       ;
+; Family                             ; Cyclone II                                       ;
+; Total logic elements               ; 3,267                                            ;
+;     Total combinational functions  ; 3,064                                            ;
+;     Dedicated logic registers      ; 1,199                                            ;
+; Total registers                    ; 1199                                             ;
+; Total pins                         ; 28                                               ;
+; Total virtual pins                 ; 0                                                ;
+; Total memory bits                  ; 0                                                ;
+; Embedded Multiplier 9-bit elements ; 48                                               ;
+; Total PLLs                         ; 0                                                ;
++------------------------------------+--------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; CORDIC_top         ; CORDIC_top         ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                            ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                        ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+---------+
+; vsrc/UART_top.v                  ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/UART_top.v                   ;         ;
+; vsrc/uart_6byte_tx.v             ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/uart_6byte_tx.v              ;         ;
+; vsrc/uart_1byte_tx.v             ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/uart_1byte_tx.v              ;         ;
+; vsrc/Show_In_block.v             ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/Show_In_block.v              ;         ;
+; vsrc/Seg_block.v                 ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/Seg_block.v                  ;         ;
+; vsrc/Output_block.v              ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/Output_block.v               ;         ;
+; vsrc/KeyFilter.v                 ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/KeyFilter.v                  ;         ;
+; vsrc/Input_block.v               ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/Input_block.v                ;         ;
+; vsrc/CORDIC_top.v                ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/CORDIC_top.v                 ;         ;
+; vsrc/Arith_block_Ext.v           ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/Arith_block_Ext.v            ;         ;
+; vsrc/Arith_block.v               ; yes             ; User Verilog HDL File        ; E:/E_Xpj/E_Project/Quartus/CORDIC/vsrc/Arith_block.v                ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/aglobal130.inc      ;         ;
+; db/lpm_divide_55m.tdf            ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/lpm_divide_55m.tdf             ;         ;
+; db/sign_div_unsign_ckh.tdf       ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/sign_div_unsign_ckh.tdf        ;         ;
+; db/alt_u_div_c4f.tdf             ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/alt_u_div_c4f.tdf              ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/add_sub_7pc.tdf                ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/add_sub_8pc.tdf                ;         ;
+; db/lpm_divide_2dm.tdf            ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/lpm_divide_2dm.tdf             ;         ;
+; db/lpm_divide_5dm.tdf            ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/lpm_divide_5dm.tdf             ;         ;
+; db/sign_div_unsign_fkh.tdf       ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/sign_div_unsign_fkh.tdf        ;         ;
+; db/alt_u_div_i4f.tdf             ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/alt_u_div_i4f.tdf              ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/lpm_mult.tdf        ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/lpm_add_sub.inc     ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/multcore.inc        ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/bypassff.inc        ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/quartus13.01/quartus/libraries/megafunctions/altshift.inc        ;         ;
+; db/mult_fct.tdf                  ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/mult_fct.tdf                   ;         ;
+; db/mult_hct.tdf                  ; yes             ; Auto-Generated Megafunction  ; E:/E_Xpj/E_Project/Quartus/CORDIC/db/mult_hct.tdf                   ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 3,267 ;
+;                                             ;       ;
+; Total combinational functions               ; 3064  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 912   ;
+;     -- 3 input functions                    ; 1441  ;
+;     -- <=2 input functions                  ; 711   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 2093  ;
+;     -- arithmetic mode                      ; 971   ;
+;                                             ;       ;
+; Total registers                             ; 1199  ;
+;     -- Dedicated logic registers            ; 1199  ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 28    ;
+; Embedded Multiplier 9-bit elements          ; 48    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 1199  ;
+; Total fan-out                               ; 13795 ;
+; Average fan-out                             ; 3.18  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                  ;
++---------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                  ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                         ; Library Name ;
++---------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+; |CORDIC_top                                 ; 3064 (84)         ; 1199 (0)     ; 0           ; 48           ; 0       ; 24        ; 28   ; 0            ; |CORDIC_top                                                                                                                                 ; work         ;
+;    |Arith_block:u_Arith_block|              ; 1209 (1053)       ; 430 (430)    ; 0           ; 24           ; 0       ; 12        ; 0    ; 0            ; |CORDIC_top|Arith_block:u_Arith_block                                                                                                       ; work         ;
+;       |lpm_mult:Mult0|                      ; 78 (0)            ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block:u_Arith_block|lpm_mult:Mult0                                                                                        ; work         ;
+;          |mult_fct:auto_generated|          ; 78 (78)           ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block:u_Arith_block|lpm_mult:Mult0|mult_fct:auto_generated                                                                ; work         ;
+;       |lpm_mult:Mult1|                      ; 78 (0)            ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block:u_Arith_block|lpm_mult:Mult1                                                                                        ; work         ;
+;          |mult_fct:auto_generated|          ; 78 (78)           ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block:u_Arith_block|lpm_mult:Mult1|mult_fct:auto_generated                                                                ; work         ;
+;    |Arith_block_Ext:u_Arith_block_Ext|      ; 1197 (1039)       ; 431 (431)    ; 0           ; 24           ; 0       ; 12        ; 0    ; 0            ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext                                                                                               ; work         ;
+;       |lpm_mult:Mult0|                      ; 79 (0)            ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult0                                                                                ; work         ;
+;          |mult_hct:auto_generated|          ; 79 (79)           ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult0|mult_hct:auto_generated                                                        ; work         ;
+;       |lpm_mult:Mult1|                      ; 79 (0)            ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1                                                                                ; work         ;
+;          |mult_hct:auto_generated|          ; 79 (79)           ; 0 (0)        ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1|mult_hct:auto_generated                                                        ; work         ;
+;    |Input_block:u_Input_block_1|            ; 116 (116)         ; 35 (35)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Input_block:u_Input_block_1                                                                                                     ; work         ;
+;    |KeyFilter:u_KeyFilter1|                 ; 43 (43)           ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|KeyFilter:u_KeyFilter1                                                                                                          ; work         ;
+;    |KeyFilter:u_KeyFilter2|                 ; 43 (43)           ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|KeyFilter:u_KeyFilter2                                                                                                          ; work         ;
+;    |Output_block:u_Output_block|            ; 129 (50)          ; 222 (129)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Output_block:u_Output_block                                                                                                     ; work         ;
+;       |UART_top:u_UART_top|                 ; 79 (0)            ; 93 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top                                                                                 ; work         ;
+;          |uart_6byte_tx:u_uart_6byte_tx|    ; 79 (36)           ; 93 (60)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx                                                   ; work         ;
+;             |uart_1byte_tx:u_uart_1byte_tx| ; 43 (43)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|uart_1byte_tx:u_uart_1byte_tx                     ; work         ;
+;    |Show_In_block:u_Show_In_block_1|        ; 243 (0)           ; 21 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1                                                                                                 ; work         ;
+;       |Seg_block:u_Seg_block0|              ; 7 (7)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block0                                                                          ; work         ;
+;       |Seg_block:u_Seg_block1|              ; 7 (7)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block1                                                                          ; work         ;
+;       |Seg_block:u_Seg_block2|              ; 7 (7)             ; 7 (7)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block2                                                                          ; work         ;
+;       |lpm_divide:Div0|                     ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div0                                                                                 ; work         ;
+;          |lpm_divide_2dm:auto_generated|    ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div0|lpm_divide_2dm:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_ckh:divider|   ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div0|lpm_divide_2dm:auto_generated|sign_div_unsign_ckh:divider                       ; work         ;
+;                |alt_u_div_c4f:divider|      ; 69 (69)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div0|lpm_divide_2dm:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider ; work         ;
+;       |lpm_divide:Div1|                     ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div1                                                                                 ; work         ;
+;          |lpm_divide_5dm:auto_generated|    ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div1|lpm_divide_5dm:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_fkh:divider|   ; 47 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div1|lpm_divide_5dm:auto_generated|sign_div_unsign_fkh:divider                       ; work         ;
+;                |alt_u_div_i4f:divider|      ; 47 (47)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div1|lpm_divide_5dm:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; work         ;
+;       |lpm_divide:Mod0|                     ; 72 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod0                                                                                 ; work         ;
+;          |lpm_divide_55m:auto_generated|    ; 72 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod0|lpm_divide_55m:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_ckh:divider|   ; 72 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod0|lpm_divide_55m:auto_generated|sign_div_unsign_ckh:divider                       ; work         ;
+;                |alt_u_div_c4f:divider|      ; 72 (72)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod0|lpm_divide_55m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider ; work         ;
+;       |lpm_divide:Mod1|                     ; 34 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod1                                                                                 ; work         ;
+;          |lpm_divide_55m:auto_generated|    ; 34 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod1|lpm_divide_55m:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_ckh:divider|   ; 34 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod1|lpm_divide_55m:auto_generated|sign_div_unsign_ckh:divider                       ; work         ;
+;                |alt_u_div_c4f:divider|      ; 34 (34)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod1|lpm_divide_55m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider ; work         ;
++---------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 24          ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 48          ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 24          ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |CORDIC_top|KeyFilter:u_KeyFilter2|curr_st                        ;
++-----------------+-----------------+--------------+-----------------+--------------+
+; Name            ; curr_st.FILTER2 ; curr_st.DOWN ; curr_st.FILTER1 ; curr_st.IDLE ;
++-----------------+-----------------+--------------+-----------------+--------------+
+; curr_st.IDLE    ; 0               ; 0            ; 0               ; 0            ;
+; curr_st.FILTER1 ; 0               ; 0            ; 1               ; 1            ;
+; curr_st.DOWN    ; 0               ; 1            ; 0               ; 1            ;
+; curr_st.FILTER2 ; 1               ; 0            ; 0               ; 1            ;
++-----------------+-----------------+--------------+-----------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------+
+; State Machine - |CORDIC_top|KeyFilter:u_KeyFilter1|curr_st                        ;
++-----------------+-----------------+--------------+-----------------+--------------+
+; Name            ; curr_st.FILTER2 ; curr_st.DOWN ; curr_st.FILTER1 ; curr_st.IDLE ;
++-----------------+-----------------+--------------+-----------------+--------------+
+; curr_st.IDLE    ; 0               ; 0            ; 0               ; 0            ;
+; curr_st.FILTER1 ; 0               ; 0            ; 1               ; 1            ;
+; curr_st.DOWN    ; 0               ; 1            ; 0               ; 1            ;
+; curr_st.FILTER2 ; 1               ; 0            ; 0               ; 1            ;
++-----------------+-----------------+--------------+-----------------+--------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------+
+; State Machine - |CORDIC_top|Output_block:u_Output_block|state ;
++----------+----------+----------+------------------------------+
+; Name     ; state.00 ; state.10 ; state.01                     ;
++----------+----------+----------+------------------------------+
+; state.00 ; 0        ; 0        ; 0                            ;
+; state.01 ; 1        ; 0        ; 1                            ;
+; state.10 ; 1        ; 1        ; 0                            ;
++----------+----------+----------+------------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------+
+; State Machine - |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|state ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------------------------+
+; Name      ; state.110 ; state.101 ; state.100 ; state.011 ; state.010 ; state.001 ; state.000                   ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------------------------+
+; state.000 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0                           ;
+; state.001 ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 1                           ;
+; state.010 ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 1                           ;
+; state.011 ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 1                           ;
+; state.100 ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 1                           ;
+; state.101 ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 1                           ;
+; state.110 ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1                           ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|state                                                     ;
++------------------+--------------+------------+------------+------------+------------------+----------------+------------+
+; Name             ; state.OUTPUT ; state.PRE2 ; state.PRE1 ; state.SWAP ; state.PROCESSING ; state.FIRST_IN ; state.WAIT ;
++------------------+--------------+------------+------------+------------+------------------+----------------+------------+
+; state.WAIT       ; 0            ; 0          ; 0          ; 0          ; 0                ; 0              ; 0          ;
+; state.FIRST_IN   ; 0            ; 0          ; 0          ; 0          ; 0                ; 1              ; 1          ;
+; state.PROCESSING ; 0            ; 0          ; 0          ; 0          ; 1                ; 0              ; 1          ;
+; state.SWAP       ; 0            ; 0          ; 0          ; 1          ; 0                ; 0              ; 1          ;
+; state.PRE1       ; 0            ; 0          ; 1          ; 0          ; 0                ; 0              ; 1          ;
+; state.PRE2       ; 0            ; 1          ; 0          ; 0          ; 0                ; 0              ; 1          ;
+; state.OUTPUT     ; 1            ; 0          ; 0          ; 0          ; 0                ; 0              ; 1          ;
++------------------+--------------+------------+------------+------------+------------------+----------------+------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |CORDIC_top|Arith_block:u_Arith_block|state                                                             ;
++------------------+--------------+------------+------------+------------+------------------+----------------+------------+
+; Name             ; state.OUTPUT ; state.PRE2 ; state.PRE1 ; state.SWAP ; state.PROCESSING ; state.FIRST_IN ; state.WAIT ;
++------------------+--------------+------------+------------+------------+------------------+----------------+------------+
+; state.WAIT       ; 0            ; 0          ; 0          ; 0          ; 0                ; 0              ; 0          ;
+; state.FIRST_IN   ; 0            ; 0          ; 0          ; 0          ; 0                ; 1              ; 1          ;
+; state.PROCESSING ; 0            ; 0          ; 0          ; 0          ; 1                ; 0              ; 1          ;
+; state.SWAP       ; 0            ; 0          ; 0          ; 1          ; 0                ; 0              ; 1          ;
+; state.PRE1       ; 0            ; 0          ; 1          ; 0          ; 0                ; 0              ; 1          ;
+; state.PRE2       ; 0            ; 1          ; 0          ; 0          ; 0                ; 0              ; 1          ;
+; state.OUTPUT     ; 1            ; 0          ; 0          ; 0          ; 0                ; 0              ; 1          ;
++------------------+--------------+------------+------------+------------+------------------+----------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                               ;
++-----------------------------------------------------+----------------------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                                ; Free of Timing Hazards ;
++-----------------------------------------------------+----------------------------------------------------+------------------------+
+; Input_block:u_Input_block_1|c_s_swap                ; GND                                                ; yes                    ;
+; Input_block:u_Input_block_1|cos_sign                ; GND                                                ; yes                    ;
+; Input_block:u_Input_block_1|sin_sign                ; GND                                                ; yes                    ;
+; Input_block:u_Input_block_1|temp_angle_to_arith[6]  ; Input_block:u_Input_block_1|temp_angle_to_arith[6] ; yes                    ;
+; Input_block:u_Input_block_1|temp_angle_to_arith[5]  ; Input_block:u_Input_block_1|temp_angle_to_arith[6] ; yes                    ;
+; Input_block:u_Input_block_1|temp_angle_to_arith[4]  ; Input_block:u_Input_block_1|temp_angle_to_arith[6] ; yes                    ;
+; Input_block:u_Input_block_1|temp_angle_to_arith[3]  ; Input_block:u_Input_block_1|temp_angle_to_arith[6] ; yes                    ;
+; Input_block:u_Input_block_1|temp_angle_to_arith[2]  ; Input_block:u_Input_block_1|temp_angle_to_arith[6] ; yes                    ;
+; Input_block:u_Input_block_1|temp_angle_to_arith[1]  ; Input_block:u_Input_block_1|temp_angle_to_arith[6] ; yes                    ;
+; Input_block:u_Input_block_1|temp_angle_to_arith[0]  ; Input_block:u_Input_block_1|temp_angle_to_arith[6] ; yes                    ;
+; Number of user-specified and inferred latches = 10  ;                                                    ;                        ;
++-----------------------------------------------------+----------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                    ;
++-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; Register name                                                                                 ; Reason for Removal                                                                                    ;
++-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[41]                                                    ; Stuck at GND due to stuck port data_in                                                                ;
+; Arith_block_Ext:u_Arith_block_Ext|Sinh[41]                                                    ; Stuck at GND due to stuck port data_in                                                                ;
+; Arith_block:u_Arith_block|Cos[41]                                                             ; Stuck at GND due to stuck port data_in                                                                ;
+; Arith_block:u_Arith_block|Sin[41]                                                             ; Stuck at GND due to stuck port data_in                                                                ;
+; Output_block:u_Output_block|cos_tmp_reg[41]                                                   ; Stuck at GND due to stuck port data_in                                                                ;
+; Output_block:u_Output_block|sin_tmp_reg[41]                                                   ; Stuck at GND due to stuck port data_in                                                                ;
+; Output_block:u_Output_block|uart_data_in[41..45]                                              ; Merged with Output_block:u_Output_block|uart_data_in[46]                                              ;
+; Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|data_48[41..45] ; Merged with Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|data_48[46] ;
+; Output_block:u_Output_block|uart_data_in[46]                                                  ; Stuck at GND due to stuck port data_in                                                                ;
+; Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|data_48[46]     ; Stuck at GND due to stuck port data_in                                                                ;
+; Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|state~10        ; Lost fanout                                                                                           ;
+; Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|state~11        ; Lost fanout                                                                                           ;
+; Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|state~12        ; Lost fanout                                                                                           ;
+; Arith_block_Ext:u_Arith_block_Ext|state~10                                                    ; Lost fanout                                                                                           ;
+; Arith_block_Ext:u_Arith_block_Ext|state~11                                                    ; Lost fanout                                                                                           ;
+; Arith_block_Ext:u_Arith_block_Ext|state~12                                                    ; Lost fanout                                                                                           ;
+; Arith_block_Ext:u_Arith_block_Ext|state~13                                                    ; Lost fanout                                                                                           ;
+; Arith_block:u_Arith_block|state~10                                                            ; Lost fanout                                                                                           ;
+; Arith_block:u_Arith_block|state~11                                                            ; Lost fanout                                                                                           ;
+; Arith_block:u_Arith_block|state~12                                                            ; Lost fanout                                                                                           ;
+; Total Number of Removed Registers = 28                                                        ;                                                                                                       ;
++-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                          ;
++----------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------+
+; Register name                                ; Reason for Removal        ; Registers Removed due to This Register                                                    ;
++----------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------+
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[41]   ; Stuck at GND              ; Output_block:u_Output_block|cos_tmp_reg[41]                                               ;
+;                                              ; due to stuck port data_in ;                                                                                           ;
+; Arith_block_Ext:u_Arith_block_Ext|Sinh[41]   ; Stuck at GND              ; Output_block:u_Output_block|sin_tmp_reg[41]                                               ;
+;                                              ; due to stuck port data_in ;                                                                                           ;
+; Output_block:u_Output_block|uart_data_in[46] ; Stuck at GND              ; Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|data_48[46] ;
+;                                              ; due to stuck port data_in ;                                                                                           ;
++----------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1199  ;
+; Number of registers using Synchronous Clear  ; 73    ;
+; Number of registers using Synchronous Load   ; 10    ;
+; Number of registers using Asynchronous Clear ; 530   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1068  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                                                                  ;
++---------------------------------------------------------------------------------------------------------------------+---------+
+; Inverted Register                                                                                                   ; Fan out ;
++---------------------------------------------------------------------------------------------------------------------+---------+
+; Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|uart_1byte_tx:u_uart_1byte_tx|uart_tx ; 1       ;
+; KeyFilter:u_KeyFilter2|key_state                                                                                    ; 2       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[15]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[31]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[39]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[23]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[7]                                                                           ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[11]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[35]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[19]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[27]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[3]                                                                           ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[13]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[37]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[21]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[29]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[5]                                                                           ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[9]                                                                           ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[33]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[17]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[25]                                                                          ; 1       ;
+; Arith_block_Ext:u_Arith_block_Ext|Cosh[1]                                                                           ; 1       ;
+; KeyFilter:u_KeyFilter1|key_state                                                                                    ; 3       ;
+; Total number of inverted registers = 23                                                                             ;         ;
++---------------------------------------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|i[6]                                                                                 ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |CORDIC_top|Arith_block:u_Arith_block|i[5]                                                                                         ;
+; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|uart_1byte_tx:u_uart_1byte_tx|div_cnt[3] ;
+; 4:1                ; 119 bits  ; 238 LEs       ; 119 LEs              ; 119 LEs                ; Yes        ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|x_pre[26]                                                                            ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|z_pre[34]                                                                            ;
+; 4:1                ; 119 bits  ; 238 LEs       ; 119 LEs              ; 119 LEs                ; Yes        ; |CORDIC_top|Arith_block:u_Arith_block|x_pre[4]                                                                                     ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |CORDIC_top|Arith_block:u_Arith_block|z_pre[38]                                                                                    ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|uart_1byte_tx:u_uart_1byte_tx|bps_cnt[2] ;
+; 6:1                ; 9 bits    ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |CORDIC_top|Input_block:u_Input_block_1|temp_angle_to_show[3]                                                                      ;
+; 7:1                ; 41 bits   ; 164 LEs       ; 41 LEs               ; 123 LEs                ; Yes        ; |CORDIC_top|Output_block:u_Output_block|uart_data_in[13]                                                                           ;
+; 13:1               ; 8 bits    ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |CORDIC_top|Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|data[3]                                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CORDIC_top|Input_block:u_Input_block_1|cos_sign                                                                                   ;
+; 4:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|Add0                                                                                         ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Input_block:u_Input_block_1|temp_angle_to_arith[4]                                                                     ;
+; 6:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; No         ; |CORDIC_top|Arith_block:u_Arith_block|Add1                                                                                         ;
+; 6:1                ; 18 bits   ; 72 LEs        ; 72 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|Add1                                                                                         ;
+; 6:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add1                                                                                 ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|state                                                                                ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|state                                                                                ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|state                                                                                ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|state                                                                                        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|state                                                                                        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|state                                                                                        ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|Add1                                                                                         ;
+; 8:1                ; 12 bits   ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add1                                                                                 ;
+; 8:1                ; 20 bits   ; 100 LEs       ; 80 LEs               ; 20 LEs                 ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add0                                                                                 ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|Add0                                                                                         ;
+; 10:1               ; 12 bits   ; 72 LEs        ; 48 LEs               ; 24 LEs                 ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add1                                                                                 ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add1                                                                                 ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|Add0                                                                                         ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add1                                                                                 ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block:u_Arith_block|Add0                                                                                         ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 32 LEs               ; 4 LEs                  ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add0                                                                                 ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|Add1                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block0 ;
++----------------+---------+--------------------------------------------------------------------------+
+; Parameter Name ; Value   ; Type                                                                     ;
++----------------+---------+--------------------------------------------------------------------------+
+; NUM0           ; 1000000 ; Unsigned Binary                                                          ;
+; NUM1           ; 1111001 ; Unsigned Binary                                                          ;
+; NUM2           ; 0100100 ; Unsigned Binary                                                          ;
+; NUM3           ; 0110000 ; Unsigned Binary                                                          ;
+; NUM4           ; 0011001 ; Unsigned Binary                                                          ;
+; NUM5           ; 0010010 ; Unsigned Binary                                                          ;
+; NUM6           ; 0000010 ; Unsigned Binary                                                          ;
+; NUM7           ; 1111000 ; Unsigned Binary                                                          ;
+; NUM8           ; 0000000 ; Unsigned Binary                                                          ;
+; NUM9           ; 0010000 ; Unsigned Binary                                                          ;
+; NUMA           ; 0001000 ; Unsigned Binary                                                          ;
+; NUMB           ; 0000011 ; Unsigned Binary                                                          ;
+; NUMC           ; 1000110 ; Unsigned Binary                                                          ;
+; NUMD           ; 0100001 ; Unsigned Binary                                                          ;
+; NUME           ; 0000110 ; Unsigned Binary                                                          ;
+; NUMF           ; 0001110 ; Unsigned Binary                                                          ;
++----------------+---------+--------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block1 ;
++----------------+---------+--------------------------------------------------------------------------+
+; Parameter Name ; Value   ; Type                                                                     ;
++----------------+---------+--------------------------------------------------------------------------+
+; NUM0           ; 1000000 ; Unsigned Binary                                                          ;
+; NUM1           ; 1111001 ; Unsigned Binary                                                          ;
+; NUM2           ; 0100100 ; Unsigned Binary                                                          ;
+; NUM3           ; 0110000 ; Unsigned Binary                                                          ;
+; NUM4           ; 0011001 ; Unsigned Binary                                                          ;
+; NUM5           ; 0010010 ; Unsigned Binary                                                          ;
+; NUM6           ; 0000010 ; Unsigned Binary                                                          ;
+; NUM7           ; 1111000 ; Unsigned Binary                                                          ;
+; NUM8           ; 0000000 ; Unsigned Binary                                                          ;
+; NUM9           ; 0010000 ; Unsigned Binary                                                          ;
+; NUMA           ; 0001000 ; Unsigned Binary                                                          ;
+; NUMB           ; 0000011 ; Unsigned Binary                                                          ;
+; NUMC           ; 1000110 ; Unsigned Binary                                                          ;
+; NUMD           ; 0100001 ; Unsigned Binary                                                          ;
+; NUME           ; 0000110 ; Unsigned Binary                                                          ;
+; NUMF           ; 0001110 ; Unsigned Binary                                                          ;
++----------------+---------+--------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block2 ;
++----------------+---------+--------------------------------------------------------------------------+
+; Parameter Name ; Value   ; Type                                                                     ;
++----------------+---------+--------------------------------------------------------------------------+
+; NUM0           ; 1000000 ; Unsigned Binary                                                          ;
+; NUM1           ; 1111001 ; Unsigned Binary                                                          ;
+; NUM2           ; 0100100 ; Unsigned Binary                                                          ;
+; NUM3           ; 0110000 ; Unsigned Binary                                                          ;
+; NUM4           ; 0011001 ; Unsigned Binary                                                          ;
+; NUM5           ; 0010010 ; Unsigned Binary                                                          ;
+; NUM6           ; 0000010 ; Unsigned Binary                                                          ;
+; NUM7           ; 1111000 ; Unsigned Binary                                                          ;
+; NUM8           ; 0000000 ; Unsigned Binary                                                          ;
+; NUM9           ; 0010000 ; Unsigned Binary                                                          ;
+; NUMA           ; 0001000 ; Unsigned Binary                                                          ;
+; NUMB           ; 0000011 ; Unsigned Binary                                                          ;
+; NUMC           ; 1000110 ; Unsigned Binary                                                          ;
+; NUMD           ; 0100001 ; Unsigned Binary                                                          ;
+; NUME           ; 0000110 ; Unsigned Binary                                                          ;
+; NUMF           ; 0001110 ; Unsigned Binary                                                          ;
++----------------+---------+--------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Arith_block:u_Arith_block ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; WAIT           ; 000   ; Unsigned Binary                               ;
+; FIRST_IN       ; 001   ; Unsigned Binary                               ;
+; PROCESSING     ; 010   ; Unsigned Binary                               ;
+; SWAP           ; 011   ; Unsigned Binary                               ;
+; PRE1           ; 100   ; Unsigned Binary                               ;
+; PRE2           ; 101   ; Unsigned Binary                               ;
+; OUTPUT         ; 110   ; Unsigned Binary                               ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Arith_block_Ext:u_Arith_block_Ext ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; WAIT           ; 000   ; Unsigned Binary                                       ;
+; FIRST_IN       ; 001   ; Unsigned Binary                                       ;
+; PROCESSING     ; 010   ; Unsigned Binary                                       ;
+; SWAP           ; 011   ; Unsigned Binary                                       ;
+; PRE1           ; 100   ; Unsigned Binary                                       ;
+; PRE2           ; 101   ; Unsigned Binary                                       ;
+; OUTPUT         ; 110   ; Unsigned Binary                                       ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Mod0 ;
++------------------------+----------------+--------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                   ;
++------------------------+----------------+--------------------------------------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                                                ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                ;
+; CBXI_PARAMETER         ; lpm_divide_55m ; Untyped                                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                         ;
++------------------------+----------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                   ;
++------------------------+----------------+--------------------------------------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                                                ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                ;
+; CBXI_PARAMETER         ; lpm_divide_2dm ; Untyped                                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                         ;
++------------------------+----------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Mod1 ;
++------------------------+----------------+--------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                   ;
++------------------------+----------------+--------------------------------------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                                                ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                ;
+; CBXI_PARAMETER         ; lpm_divide_55m ; Untyped                                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                         ;
++------------------------+----------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Div1 ;
++------------------------+----------------+--------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                   ;
++------------------------+----------------+--------------------------------------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                                                ;
+; LPM_WIDTHD             ; 7              ; Untyped                                                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                ;
+; CBXI_PARAMETER         ; lpm_divide_5dm ; Untyped                                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                         ;
++------------------------+----------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Show_In_block:u_Show_In_block_1|lpm_divide:Mod2 ;
++------------------------+----------------+--------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                   ;
++------------------------+----------------+--------------------------------------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                                                ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                ;
+; CBXI_PARAMETER         ; lpm_divide_55m ; Untyped                                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                         ;
++------------------------+----------------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Arith_block:u_Arith_block|lpm_mult:Mult1 ;
++------------------------------------------------+------------+-----------------------------+
+; Parameter Name                                 ; Value      ; Type                        ;
++------------------------------------------------+------------+-----------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE              ;
+; LPM_WIDTHA                                     ; 42         ; Untyped                     ;
+; LPM_WIDTHB                                     ; 34         ; Untyped                     ;
+; LPM_WIDTHP                                     ; 76         ; Untyped                     ;
+; LPM_WIDTHR                                     ; 76         ; Untyped                     ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                     ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                     ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                     ;
+; LATENCY                                        ; 0          ; Untyped                     ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                     ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                     ;
+; USE_EAB                                        ; OFF        ; Untyped                     ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped                     ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                     ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                     ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K         ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                     ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                     ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                     ;
+; CBXI_PARAMETER                                 ; mult_fct   ; Untyped                     ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                     ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                     ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped                     ;
++------------------------------------------------+------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1 ;
++------------------------------------------------+------------+-------------------------------------+
+; Parameter Name                                 ; Value      ; Type                                ;
++------------------------------------------------+------------+-------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY                          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY                        ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE                        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE                      ;
+; LPM_WIDTHA                                     ; 42         ; Untyped                             ;
+; LPM_WIDTHB                                     ; 35         ; Untyped                             ;
+; LPM_WIDTHP                                     ; 77         ; Untyped                             ;
+; LPM_WIDTHR                                     ; 77         ; Untyped                             ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                             ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                             ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                             ;
+; LATENCY                                        ; 0          ; Untyped                             ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                             ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                             ;
+; USE_EAB                                        ; OFF        ; Untyped                             ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped                             ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                             ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K                 ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                             ;
+; CBXI_PARAMETER                                 ; mult_hct   ; Untyped                             ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                             ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped                             ;
++------------------------------------------------+------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Arith_block:u_Arith_block|lpm_mult:Mult0 ;
++------------------------------------------------+------------+-----------------------------+
+; Parameter Name                                 ; Value      ; Type                        ;
++------------------------------------------------+------------+-----------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE              ;
+; LPM_WIDTHA                                     ; 42         ; Untyped                     ;
+; LPM_WIDTHB                                     ; 34         ; Untyped                     ;
+; LPM_WIDTHP                                     ; 76         ; Untyped                     ;
+; LPM_WIDTHR                                     ; 76         ; Untyped                     ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                     ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                     ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                     ;
+; LATENCY                                        ; 0          ; Untyped                     ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                     ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                     ;
+; USE_EAB                                        ; OFF        ; Untyped                     ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped                     ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                     ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                     ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K         ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                     ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                     ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                     ;
+; CBXI_PARAMETER                                 ; mult_fct   ; Untyped                     ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                     ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                     ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped                     ;
++------------------------------------------------+------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult0 ;
++------------------------------------------------+------------+-------------------------------------+
+; Parameter Name                                 ; Value      ; Type                                ;
++------------------------------------------------+------------+-------------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY                          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY                        ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE                        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE                      ;
+; LPM_WIDTHA                                     ; 42         ; Untyped                             ;
+; LPM_WIDTHB                                     ; 35         ; Untyped                             ;
+; LPM_WIDTHP                                     ; 77         ; Untyped                             ;
+; LPM_WIDTHR                                     ; 77         ; Untyped                             ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                             ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                             ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                             ;
+; LATENCY                                        ; 0          ; Untyped                             ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                             ;
+; INPUT_B_IS_CONSTANT                            ; YES        ; Untyped                             ;
+; USE_EAB                                        ; OFF        ; Untyped                             ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped                             ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                             ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K                 ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                             ;
+; CBXI_PARAMETER                                 ; mult_hct   ; Untyped                             ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                             ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped                             ;
++------------------------------------------------+------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                           ;
++---------------------------------------+--------------------------------------------------+
+; Name                                  ; Value                                            ;
++---------------------------------------+--------------------------------------------------+
+; Number of entity instances            ; 4                                                ;
+; Entity Instance                       ; Arith_block:u_Arith_block|lpm_mult:Mult1         ;
+;     -- LPM_WIDTHA                     ; 42                                               ;
+;     -- LPM_WIDTHB                     ; 34                                               ;
+;     -- LPM_WIDTHP                     ; 76                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                              ;
+;     -- USE_EAB                        ; OFF                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                               ;
+; Entity Instance                       ; Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 42                                               ;
+;     -- LPM_WIDTHB                     ; 35                                               ;
+;     -- LPM_WIDTHP                     ; 77                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                              ;
+;     -- USE_EAB                        ; OFF                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                               ;
+; Entity Instance                       ; Arith_block:u_Arith_block|lpm_mult:Mult0         ;
+;     -- LPM_WIDTHA                     ; 42                                               ;
+;     -- LPM_WIDTHB                     ; 34                                               ;
+;     -- LPM_WIDTHP                     ; 76                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                              ;
+;     -- USE_EAB                        ; OFF                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                               ;
+; Entity Instance                       ; Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 42                                               ;
+;     -- LPM_WIDTHB                     ; 35                                               ;
+;     -- LPM_WIDTHP                     ; 77                                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                               ;
+;     -- INPUT_B_IS_CONSTANT            ; YES                                              ;
+;     -- USE_EAB                        ; OFF                                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                             ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                               ;
++---------------------------------------+--------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Output_block:u_Output_block"                                                                                                                                                           ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data_B_in ; Input ; Warning  ; Input port expression (43 bits) is wider than the input port (42 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-----------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version
+    Info: Processing started: Fri Nov 24 23:45:30 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CORDIC_top -c CORDIC_top
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/uart_top.v
+    Info (12023): Found entity 1: UART_top
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/uart_6byte_tx.v
+    Info (12023): Found entity 1: uart_6byte_tx
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/uart_1byte_tx.v
+    Info (12023): Found entity 1: uart_1byte_tx
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/show_out_block.v
+    Info (12023): Found entity 1: Show_Out_block
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/show_in_block.v
+    Info (12023): Found entity 1: Show_In_block
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/seg_block.v
+    Info (12023): Found entity 1: Seg_block
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/output_block.v
+    Info (12023): Found entity 1: Output_block
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/lcd_block.v
+    Info (12023): Found entity 1: LCD_block
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/keyfilter.v
+    Info (12023): Found entity 1: KeyFilter
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/input_block.v
+    Info (12023): Found entity 1: Input_block
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/decoder_block.v
+    Info (12023): Found entity 1: Decoder_block
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/cordic_top.v
+    Info (12023): Found entity 1: CORDIC_top
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/arith_block_ext.v
+    Info (12023): Found entity 1: Arith_block_Ext
+Info (12021): Found 1 design units, including 1 entities, in source file vsrc/arith_block.v
+    Info (12023): Found entity 1: Arith_block
+Info (12127): Elaborating entity "CORDIC_top" for the top level hierarchy
+Info (12128): Elaborating entity "Input_block" for hierarchy "Input_block:u_Input_block_1"
+Warning (10240): Verilog HDL Always Construct warning at Input_block.v(56): inferring latch(es) for variable "cos_sign", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Input_block.v(56): inferring latch(es) for variable "sin_sign", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Input_block.v(56): inferring latch(es) for variable "c_s_swap", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Input_block.v(56): inferring latch(es) for variable "temp_angle_to_arith", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "temp_angle_to_arith[0]" at Input_block.v(56)
+Info (10041): Inferred latch for "temp_angle_to_arith[1]" at Input_block.v(56)
+Info (10041): Inferred latch for "temp_angle_to_arith[2]" at Input_block.v(56)
+Info (10041): Inferred latch for "temp_angle_to_arith[3]" at Input_block.v(56)
+Info (10041): Inferred latch for "temp_angle_to_arith[4]" at Input_block.v(56)
+Info (10041): Inferred latch for "temp_angle_to_arith[5]" at Input_block.v(56)
+Info (10041): Inferred latch for "temp_angle_to_arith[6]" at Input_block.v(56)
+Info (10041): Inferred latch for "c_s_swap" at Input_block.v(56)
+Info (10041): Inferred latch for "sin_sign" at Input_block.v(56)
+Info (10041): Inferred latch for "cos_sign" at Input_block.v(56)
+Info (12128): Elaborating entity "Show_In_block" for hierarchy "Show_In_block:u_Show_In_block_1"
+Warning (10230): Verilog HDL assignment warning at Show_In_block.v(15): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at Show_In_block.v(16): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at Show_In_block.v(17): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "Seg_block" for hierarchy "Show_In_block:u_Show_In_block_1|Seg_block:u_Seg_block0"
+Info (12128): Elaborating entity "Arith_block" for hierarchy "Arith_block:u_Arith_block"
+Warning (10030): Net "angle.data_a" at Arith_block.v(22) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "angle.waddr_a" at Arith_block.v(22) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "angle.we_a" at Arith_block.v(22) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "Arith_block_Ext" for hierarchy "Arith_block_Ext:u_Arith_block_Ext"
+Warning (10030): Net "angle.data_a" at Arith_block_Ext.v(20) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "angle.waddr_a" at Arith_block_Ext.v(20) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "angle.we_a" at Arith_block_Ext.v(20) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "Output_block" for hierarchy "Output_block:u_Output_block"
+Info (12128): Elaborating entity "UART_top" for hierarchy "Output_block:u_Output_block|UART_top:u_UART_top"
+Info (12128): Elaborating entity "uart_6byte_tx" for hierarchy "Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx"
+Info (12128): Elaborating entity "uart_1byte_tx" for hierarchy "Output_block:u_Output_block|UART_top:u_UART_top|uart_6byte_tx:u_uart_6byte_tx|uart_1byte_tx:u_uart_1byte_tx"
+Info (12128): Elaborating entity "KeyFilter" for hierarchy "KeyFilter:u_KeyFilter1"
+Critical Warning (127005): Memory depth (64) in the design file differs from memory depth (41) in the Memory Initialization File "E:/E_Xpj/E_Project/Quartus/CORDIC/db/CORDIC_top.ram0_Arith_block_5a25ee5e.hdl.mif" -- setting initial value for remaining addresses to 0
+Critical Warning (127005): Memory depth (64) in the design file differs from memory depth (34) in the Memory Initialization File "E:/E_Xpj/E_Project/Quartus/CORDIC/db/CORDIC_top.ram0_Arith_block_Ext_a4ec1b58.hdl.mif" -- setting initial value for remaining addresses to 0
+Info (278001): Inferred 9 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Show_In_block:u_Show_In_block_1|Mod0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Show_In_block:u_Show_In_block_1|Div0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Show_In_block:u_Show_In_block_1|Mod1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Show_In_block:u_Show_In_block_1|Div1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Show_In_block:u_Show_In_block_1|Mod2"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Arith_block:u_Arith_block|Mult1"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Arith_block_Ext:u_Arith_block_Ext|Mult1"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Arith_block:u_Arith_block|Mult0"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Arith_block_Ext:u_Arith_block_Ext|Mult0"
+Info (12130): Elaborated megafunction instantiation "Show_In_block:u_Show_In_block_1|lpm_divide:Mod0"
+Info (12133): Instantiated megafunction "Show_In_block:u_Show_In_block_1|lpm_divide:Mod0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_55m.tdf
+    Info (12023): Found entity 1: lpm_divide_55m
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ckh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ckh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_c4f.tdf
+    Info (12023): Found entity 1: alt_u_div_c4f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc
+Info (12130): Elaborated megafunction instantiation "Show_In_block:u_Show_In_block_1|lpm_divide:Div0"
+Info (12133): Instantiated megafunction "Show_In_block:u_Show_In_block_1|lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_2dm.tdf
+    Info (12023): Found entity 1: lpm_divide_2dm
+Info (12130): Elaborated megafunction instantiation "Show_In_block:u_Show_In_block_1|lpm_divide:Div1"
+Info (12133): Instantiated megafunction "Show_In_block:u_Show_In_block_1|lpm_divide:Div1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_5dm.tdf
+    Info (12023): Found entity 1: lpm_divide_5dm
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_fkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_fkh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i4f.tdf
+    Info (12023): Found entity 1: alt_u_div_i4f
+Info (12130): Elaborated megafunction instantiation "Arith_block:u_Arith_block|lpm_mult:Mult1"
+Info (12133): Instantiated megafunction "Arith_block:u_Arith_block|lpm_mult:Mult1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "42"
+    Info (12134): Parameter "LPM_WIDTHB" = "34"
+    Info (12134): Parameter "LPM_WIDTHP" = "76"
+    Info (12134): Parameter "LPM_WIDTHR" = "76"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_fct.tdf
+    Info (12023): Found entity 1: mult_fct
+Info (12130): Elaborated megafunction instantiation "Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1"
+Info (12133): Instantiated megafunction "Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "42"
+    Info (12134): Parameter "LPM_WIDTHB" = "35"
+    Info (12134): Parameter "LPM_WIDTHP" = "77"
+    Info (12134): Parameter "LPM_WIDTHR" = "77"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_hct.tdf
+    Info (12023): Found entity 1: mult_hct
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13014): Ignored 1300 buffer(s)
+    Info (13019): Ignored 1300 SOFT buffer(s)
+Warning (13012): Latch Input_block:u_Input_block_1|temp_angle_to_arith[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Input_block:u_Input_block_1|temp_angle_to_show[6]
+Warning (13012): Latch Input_block:u_Input_block_1|temp_angle_to_arith[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Input_block:u_Input_block_1|temp_angle_to_show[5]
+Warning (13012): Latch Input_block:u_Input_block_1|temp_angle_to_arith[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Input_block:u_Input_block_1|temp_angle_to_show[8]
+Warning (13012): Latch Input_block:u_Input_block_1|temp_angle_to_arith[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Input_block:u_Input_block_1|temp_angle_to_show[3]
+Warning (13012): Latch Input_block:u_Input_block_1|temp_angle_to_arith[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Input_block:u_Input_block_1|temp_angle_to_show[8]
+Warning (13012): Latch Input_block:u_Input_block_1|temp_angle_to_arith[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Input_block:u_Input_block_1|temp_angle_to_show[8]
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (17049): 10 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file E:/E_Xpj/E_Project/Quartus/CORDIC/output_files/CORDIC_top.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 3346 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 22 output pins
+    Info (21061): Implemented 3270 logic cells
+    Info (21062): Implemented 48 DSP elements
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 4630 megabytes
+    Info: Processing ended: Fri Nov 24 23:45:39 2023
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:10
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in E:/E_Xpj/E_Project/Quartus/CORDIC/output_files/CORDIC_top.map.smsg.
+
+

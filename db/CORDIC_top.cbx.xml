@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="CORDIC_top">
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_2dm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Arith_block:u_Arith_block|lpm_mult:Mult1" CBX_FILE_NAME="mult_fct.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult1" CBX_FILE_NAME="mult_hct.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Div1" CBX_FILE_NAME="lpm_divide_5dm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_55m.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod2" CBX_FILE_NAME="lpm_divide_55m.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Arith_block:u_Arith_block|lpm_mult:Mult0" CBX_FILE_NAME="mult_fct.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Arith_block_Ext:u_Arith_block_Ext|lpm_mult:Mult0" CBX_FILE_NAME="mult_hct.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CORDIC_top|Show_In_block:u_Show_In_block_1|lpm_divide:Mod1" CBX_FILE_NAME="lpm_divide_55m.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

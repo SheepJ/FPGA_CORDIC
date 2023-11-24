@@ -1,0 +1,216 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Stduy/Project/Quartus_Proj/CORDIC/simulation/modelsim
+T_opt
+!s110 1700234548
+V?DOLO]:0coTVzCGKn9YOg0
+04 18 4 work CORDIC_top_vlg_tst fast 0
+=1-744ca15d67eb-65578534-a1-3dc0
+o-quiet -auto_acc_if_foreign -work work -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work +acc
+n@_opt
+OL;O;10.4;61
+vArith_block
+Z1 !s110 1700234547
+!i10b 1
+!s100 8`W1l=hDg[eL<bjbk`PIU0
+IAbfdgbASKnl9Ta=[NRaBI3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1700234140
+8D:/Stduy/Project/Quartus_Proj/CORDIC/Arith_block.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/Arith_block.v
+L0 10
+Z3 OL;L;10.4;61
+r1
+!s85 0
+31
+!s108 1700234547.348000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/Arith_block.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/Arith_block.v|
+!i113 0
+Z4 o-vlog01compat -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z5 !s92 -vlog01compat -work work +incdir+D:/Stduy/Project/Quartus_Proj/CORDIC -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+n@arith_block
+vCORDIC_top
+R1
+!i10b 1
+!s100 _6<1UFcbEczMzZRB1Dd<e1
+I^zP0:F4:F^m3eNE=;KMRm2
+R2
+R0
+w1700231735
+8D:/Stduy/Project/Quartus_Proj/CORDIC/CORDIC_top.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/CORDIC_top.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1700234547.261000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/CORDIC_top.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/CORDIC_top.v|
+!i113 0
+R4
+R5
+n@c@o@r@d@i@c_top
+vCORDIC_top_vlg_tst
+R1
+!i10b 1
+!s100 @TdgDbRnzMWiM2Zn_RVSK1
+I?:IJ6T>i^n>iZMbaFz>NE2
+R2
+R0
+w1700227719
+8D:/Stduy/Project/Quartus_Proj/CORDIC/simulation/modelsim/CORDIC_top.vt
+FD:/Stduy/Project/Quartus_Proj/CORDIC/simulation/modelsim/CORDIC_top.vt
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1700234547.870000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/simulation/modelsim/CORDIC_top.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC/simulation/modelsim|D:/Stduy/Project/Quartus_Proj/CORDIC/simulation/modelsim/CORDIC_top.vt|
+!i113 0
+R4
+!s92 -vlog01compat -work work +incdir+D:/Stduy/Project/Quartus_Proj/CORDIC/simulation/modelsim -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+n@c@o@r@d@i@c_top_vlg_tst
+vDecoder_block
+R1
+!i10b 1
+!s100 K><DnAL2_X8K=i2^7E[h23
+IOmOoj538OT`Q4WElj3oh]0
+R2
+R0
+w1700234430
+8D:/Stduy/Project/Quartus_Proj/CORDIC/Decoder_block.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/Decoder_block.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1700234547.720000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/Decoder_block.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/Decoder_block.v|
+!i113 0
+R4
+R5
+n@decoder_block
+vInput_block
+R1
+!i10b 1
+!s100 dG69O[@WDCkdm5BA0RNle0
+IdYBhY@=oM]U<@CXK?_fd]3
+R2
+R0
+w1698838142
+8D:/Stduy/Project/Quartus_Proj/CORDIC/Input_block.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/Input_block.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1700234547.428000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/Input_block.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/Input_block.v|
+!i113 0
+R4
+R5
+n@input_block
+vLCD_block
+R1
+!i10b 1
+!s100 [a9N23z8Vm[kMYUfRFcWX2
+InTOEj@X0CkC`<WPYW]Zcm1
+R2
+R0
+w1700231785
+8D:/Stduy/Project/Quartus_Proj/CORDIC/LCD_block.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/LCD_block.v
+L0 4
+R3
+r1
+!s85 0
+31
+!s108 1700234547.798000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/LCD_block.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/LCD_block.v|
+!i113 0
+R4
+R5
+n@l@c@d_block
+vOutput_block
+R1
+!i10b 1
+!s100 f7Bg=jGZ_ad_eR[Kf]^b42
+IJgbTHg5TE1f^6>H2am0li2
+R2
+R0
+w1700231606
+8D:/Stduy/Project/Quartus_Proj/CORDIC/Output_block.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/Output_block.v
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1700234547.503000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/Output_block.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/Output_block.v|
+!i113 0
+R4
+R5
+n@output_block
+vSeg_block
+R1
+!i10b 1
+!s100 JXkB[iD;M[Ud>CK@1Ij:63
+I3cH6nhM=2]JUodImLhG2g1
+R2
+R0
+w1698141455
+8D:/Stduy/Project/Quartus_Proj/CORDIC/Seg_block.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/Seg_block.v
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1700234547.647000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/Seg_block.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/Seg_block.v|
+!i113 0
+R4
+R5
+n@seg_block
+vShow_In_block
+R1
+!i10b 1
+!s100 hLk]BYb19hUlC:T72BW742
+Iea?G7YBReDHDRoW@7zjfL2
+R2
+R0
+w1698218548
+8D:/Stduy/Project/Quartus_Proj/CORDIC/Show_In_block.v
+FD:/Stduy/Project/Quartus_Proj/CORDIC/Show_In_block.v
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1700234547.573000
+!s107 D:/Stduy/Project/Quartus_Proj/CORDIC/Show_In_block.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Stduy/Project/Quartus_Proj/CORDIC|D:/Stduy/Project/Quartus_Proj/CORDIC/Show_In_block.v|
+!i113 0
+R4
+R5
+n@show_@in_block

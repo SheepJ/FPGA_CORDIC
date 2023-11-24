@@ -1,0 +1,126 @@
+
+module Output_block(
+input clk						,
+input rst_n						,
+ 
+ 
+input cos_sign_to_output	,				//cos符号，传给Show_Out_block
+input sin_sign_to_output	,				//sin符号，传给Show_Out_block
+input c_s_swap_to_output	,				//cos与sin交换标志，传给Show_Out_block
+
+
+input tx_start					,
+input [41:0]data_A_in		,
+input [41:0]data_B_in		,
+output uart_tx		    		
+
+);
+
+
+
+wire trans_done;
+
+reg [41:0]cos_tmp_reg;
+reg [41:0]sin_tmp_reg;
+reg tx_start_reg;
+
+
+//锁住输入数据
+always@(posedge clk or negedge rst_n) begin
+	if(~rst_n) begin
+		cos_tmp_reg <= 42'd0;
+		sin_tmp_reg <= 42'd0;
+	end
+	else if(tx_start) begin
+		cos_tmp_reg <= data_A_in;
+		sin_tmp_reg <= data_B_in;
+		tx_start_reg <= tx_start;
+	end
+	else begin
+		cos_tmp_reg <= cos_tmp_reg;
+		sin_tmp_reg <= sin_tmp_reg;
+		tx_start_reg <= tx_start;
+	end
+end
+
+wire [41:0]cos_tmp;
+wire [41:0]sin_tmp;
+wire [47:0]cos;
+wire [47:0]sin;
+
+
+//根据c_s_swap_to_output判断是否要交换cos和sin
+assign cos_tmp = c_s_swap_to_output? sin_tmp_reg : cos_tmp_reg;
+assign sin_tmp = c_s_swap_to_output? cos_tmp_reg : sin_tmp_reg;
+//将符号位拼接在最高位（第48位）
+assign cos = {{cos_sign_to_output},{5'b0}, cos_tmp};
+assign sin = {{sin_sign_to_output},{5'b0}, sin_tmp};
+
+
+//UART模块
+UART_top u_UART_top(
+	.clk						(clk),
+	.rst_n					(rst_n),
+	.tx_start				(uart_start),
+	.uart_data_in			(uart_data_in),
+	.uart_tx		    		(uart_tx),
+	.trans_done				(trans_done)
+);
+
+
+
+
+//控制发送cos和sin的状态机
+reg [1:0]state;
+reg uart_start;
+reg [47:0]uart_data_in;
+
+always@(posedge clk or negedge rst_n) begin
+	if(~rst_n) begin
+		state <= 2'b00;
+		uart_data_in <= 48'd0;
+		uart_start <= 1'b0;
+	end
+	else if(state == 2'b00) begin
+		if(tx_start_reg) begin
+			uart_data_in <= cos;
+			uart_start <= 1;
+			state <= 2'b01;
+		end
+		else begin
+			uart_data_in <= uart_data_in;
+			uart_start <= 1'b0;
+			state <= 2'b00;
+		end    
+	end
+	else if(state == 2'b01) begin
+		if(trans_done)begin
+			uart_data_in <= sin;
+			uart_start <= 1;
+			state <= 2'b10;
+		end
+		else begin
+			uart_data_in <= uart_data_in;
+			uart_start <= 1'b0;
+			state <= 2'b01;
+		end     
+	end
+	else if(state == 2'b10)begin
+		if(trans_done)begin               
+			uart_start <= 0;
+			state <= 2'b00;
+		end
+		else begin                    
+			uart_data_in <= uart_data_in;
+			uart_start <= 0;
+			state   <= 2'b10;
+		end        
+	end
+end
+
+
+
+
+
+endmodule
+
